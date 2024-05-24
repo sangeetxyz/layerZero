@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import { Anybody } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "@/components/providers/theme";
+import { cookieToInitialState } from "wagmi";
+import { headers } from "next/headers";
+import { config } from "@/config/w3m";
+import Web3ModalProvider from "@/components/providers/auth";
+import JotaiProvider from "@/components/providers/jotai";
+import { Toaster } from "@/components/ui/sonner";
 
 const anybody = Anybody({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -18,11 +24,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const initialState = cookieToInitialState(config, headers().get("cookie"));
   return (
     <html lang="en">
       <body className={anybody.className}>
         <ThemeProvider attribute="class" forcedTheme="dark">
-          {children}
+          <Web3ModalProvider initialState={initialState}>
+            <JotaiProvider>{children}</JotaiProvider>
+          </Web3ModalProvider>
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

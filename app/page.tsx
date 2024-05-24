@@ -1,20 +1,11 @@
-"use client";
-
 import Image from "next/image";
-import ThemeButton from "@/components/theme-button";
-import { Button } from "@/components/ui/button";
+import ThemeButton from "@/components/buttons/theme-button";
+import Background from "@/components/global/background";
 
 export default function Home() {
   return (
-    <main className="h-screen relative anybody">
-      <Image
-        src="/background.jpg"
-        alt="Background"
-        fill
-        className="object-cover brightness-50"
-        priority
-        quality={100}
-      />
+    <main className="h-screen relative">
+      <Background />
       <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
         <div className="flex flex-col text-[8vw] relative w-fit ">
           <div className="text-8x whitespace-nowrap leading-none">
@@ -25,7 +16,11 @@ export default function Home() {
           </div>
           <div className="font-bold leading-none">Round</div>
           <div className="flex justify-center z-10">
-            <ThemeButton text="Get Started" icon="arrow_circle_right" />
+            <ThemeButton
+              route="transfer"
+              text="Get Started"
+              icon="arrow_circle_right"
+            />
           </div>
         </div>
         <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center">
