@@ -13,7 +13,7 @@ const Navbar = () => {
   const { open } = useWeb3Modal();
   const { isConnected, address } = useAccount();
   return (
-    <div className="h-20 absolute top-0 left-0 w-full flex items-center justify-between p-6">
+    <div className="h-20 absolute top-0 left-0 w-full flex items-center justify-between p-6 pr-8">
       <Image
         className="cursor-pointer"
         onClick={() => router.push("/")}

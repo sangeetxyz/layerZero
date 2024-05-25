@@ -219,7 +219,7 @@ const BridgeBox = () => {
         onClick={() => {
           handleBridge();
         }}
-        text={isConnected ? "Transfer" : "Connect Wallet"}
+        text={isConnected ? "Bridge In" : "Connect Wallet"}
         icon="wallet"
       />
     </div>
